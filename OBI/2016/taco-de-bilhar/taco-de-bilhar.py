@@ -1,4 +1,4 @@
-#https://olimpiada.ic.unicamp.br/pratique/p1/2016/f1/tacos-bilhar/
+# https://olimpiada.ic.unicamp.br/pratique/p1/2016/f1/tacos-bilhar/
 
 tacos=[]
 fabricados=0
