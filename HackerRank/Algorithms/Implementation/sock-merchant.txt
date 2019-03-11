@@ -1,0 +1,1 @@
+see HackerRank\Interview Preparation Kit\Warm-up Challenges\sock-merchant.py
