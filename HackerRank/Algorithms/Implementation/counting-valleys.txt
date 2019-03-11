@@ -1,0 +1,16 @@
+see HackerRank\Interview Preparation Kit\Warm-up Challenges\counting-valleys.py
+
+# Test case 0 = UDDDUDUU = 1
+_/\      _
+   \    /
+    \/\/
+
+# Test case 1 = DDUUDDUDUUUD = 2
+_          /\_
+ \  /\    /
+  \/  \/\/
+
+# Test case 2 = UDUUUDUDDD = 0
+     /\/\
+    /    \
+_/\/      \_
