@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 public static class Pangram
 {
     public static bool IsPangram(string input)
     {
         char[] alphas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-        foreach (var alpha in alphas)
+        List<char> alphas_used = new List<char>();
+
+        foreach (var letter in input.ToUpper())
         {
-            if (!input.Contains(alpha))
+            if (alphas.Contains(letter) && (!alphas_used.Contains(letter)))
             {
-                return false;
+                alphas_used.Add(letter);
             }
         }
-        return true;
+
+        return alphas_used.Count == alphas.Count();
     }
 }
