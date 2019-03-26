@@ -1,31 +1,17 @@
 defmodule Bob do
   def hey(input) do
+    shouting? = input == String.upcase(input)
+    asking_question? = String.last(input) == "?"
+    silence? = String.trim(input) == ""
+    contatins_number? = Regex.match?(~r/[0-9]/, input)
+    contains_only_number? = String.trim(String.replace(input, ~r/([0-9]|,|\?)/, "")) == ""
+
     cond do
-      shouting?(input) && asking_question?(input) && !contatins_number?(input) -> "Calm down, I know what I'm doing!"
-      shouting?(input) && !silence?(input) && !contains_only_number?(input) -> "Whoa, chill out!"
-      asking_question?(input) -> "Sure."
-      silence?(input) -> "Fine. Be that way!"
+      shouting? && asking_question? && !contatins_number? -> "Calm down, I know what I'm doing!"
+      shouting? && !silence? && !contains_only_number? -> "Whoa, chill out!"
+      asking_question? -> "Sure."
+      silence? -> "Fine. Be that way!"
       true -> "Whatever."
     end
-  end
-
-  def shouting?(input) do
-    input == String.upcase(input)
-  end
-
-  def asking_question?(input) do
-    String.last(input) == "?"
-  end
-
-  def silence?(input) do
-    String.trim(input) == ""
-  end
-
-  def contatins_number?(input) do
-    Regex.match?(~r/[0-9]/, input)
-  end
-
-  def contains_only_number?(input) do
-    String.trim(String.replace(input, ~r/([0-9]|,|\?)/, "")) == ""
   end
 end
