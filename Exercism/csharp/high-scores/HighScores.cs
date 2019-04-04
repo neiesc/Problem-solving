@@ -12,21 +12,21 @@ public class HighScores
 
     public List<int> Scores()
     {
-        return this.listOfScores;
+        return listOfScores;
     }
 
     public int Latest()
     {
-        return this.listOfScores.Where(x => x != 0).OrderBy(i => i).ToList()[0];
+        return listOfScores.Where(x => x != 0).OrderBy(i => i).ToList()[0];
     }
 
     public int PersonalBest()
     {
-        return this.listOfScores.OrderByDescending(i => i).ToList()[0];
+        return PersonalTopThree()[0];
     }
 
     public List<int> PersonalTopThree()
     {
-        return this.listOfScores.OrderByDescending(i => i).Take(3).ToList();
+        return listOfScores.OrderByDescending(i => i).Take(3).ToList();
     }
 }
