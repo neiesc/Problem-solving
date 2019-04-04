@@ -4,28 +4,29 @@ using System.Linq;
 
 public class HighScores
 {
-    public HighScores(List<int> list)
+    private List<int> listOfScores = new List<int>();
+    public HighScores(List<int> listOfScores)
     {
-        throw new NotImplementedException();
+        this.listOfScores.AddRange(listOfScores);
     }
 
     public List<int> Scores()
     {
-        throw new NotImplementedException();
+        return this.listOfScores;
     }
 
     public int Latest()
     {
-        throw new NotImplementedException();
+        return this.listOfScores.Where(x => x != 0).OrderBy(i => i).ToList()[0];
     }
 
     public int PersonalBest()
     {
-        throw new NotImplementedException();
+        return this.listOfScores.OrderByDescending(i => i).ToList()[0];
     }
 
     public List<int> PersonalTopThree()
     {
-        throw new NotImplementedException();
+        return this.listOfScores.OrderByDescending(i => i).Take(3).ToList();
     }
 }
