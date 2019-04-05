@@ -4,7 +4,7 @@ using System.Linq;
 
 public class HighScores
 {
-    private List<int> listOfScores = new List<int>();
+    private readonly List<int> listOfScores = new List<int>();
     public HighScores(List<int> listOfScores)
     {
         this.listOfScores.AddRange(listOfScores);
@@ -12,17 +12,17 @@ public class HighScores
 
     public List<int> Scores()
     {
-        return listOfScores;
+        return listOfScores.Select(item => item).ToList();
     }
 
     public int Latest()
     {
-        return listOfScores.Where(x => x != 0).OrderBy(i => i).ToList()[0];
+        return listOfScores.Last();
     }
 
     public int PersonalBest()
     {
-        return PersonalTopThree()[0];
+        return listOfScores.Max();
     }
 
     public List<int> PersonalTopThree()
