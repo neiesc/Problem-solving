@@ -1,0 +1,7 @@
+2
+2
+SE
+Case #1: SE ES
+5
+EESSSESE
+Case #2: EESSSESE SSEEESES
