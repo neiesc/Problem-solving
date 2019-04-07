@@ -6,7 +6,7 @@ public static class Hamming
     {
         if (firstStrand.Length != secondStrand.Length)
         {
-            throw new ArgumentException("Not match the firstStrand and secondStrand");
+            throw new ArgumentException("Not match length the firstStrand and secondStrand");
         }
         
         var hammingDistance = 0;
