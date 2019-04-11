@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 public static class Hamming
 {
@@ -8,15 +9,9 @@ public static class Hamming
         {
             throw new ArgumentException("Not match length the firstStrand and secondStrand");
         }
-        
-        var hammingDistance = 0;
-        for (int i = 0; i < firstStrand.Length; i++)
-        {
-            if (firstStrand[i] != secondStrand[i])
-            {
-                hammingDistance++;
-            }
-        }
+
+        var hammingDistance = firstStrand.Zip(secondStrand, (first, second) => first != second)
+            .Count(x => x);
 
         return hammingDistance;
     }
