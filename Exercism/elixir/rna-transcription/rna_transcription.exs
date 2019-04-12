@@ -13,12 +13,11 @@ defmodule RNATranscription do
   end
 
   def get_transcription(dna) do
-    cond do
-      dna === ?G -> ?C
-      dna === ?C -> ?G
-      dna === ?T -> ?A
-      dna === ?A -> ?U
-      true -> dna
+    case dna do
+      ?G -> ?C
+      ?C -> ?G
+      ?T -> ?A
+      ?A -> ?U
     end
   end
 end
