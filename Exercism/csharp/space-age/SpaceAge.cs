@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 public class SpaceAge
 {
-    private int SecondsTotal { get; set; }
     private const double EarthOrbitalPeriodSecondsPerYear = 365.25 * 24 * 60 * 60;
-    private Dictionary<string, double> PlanetsOrbitalPeriodSecondsPerYear = new Dictionary<string, double>() {
+
+    private int secondsTotal { get; set; }
+    private Dictionary<string, double> planetsOrbitalPeriodSecondsPerYear = new Dictionary<string, double>() {
         {"Mercury", 0.2408467 * EarthOrbitalPeriodSecondsPerYear},
         {"Venus", 0.61519726 * EarthOrbitalPeriodSecondsPerYear},
         {"Mars", 1.8808158 * EarthOrbitalPeriodSecondsPerYear},
@@ -17,46 +18,46 @@ public class SpaceAge
 
     public SpaceAge(int seconds)
     {
-        SecondsTotal = seconds;
+        secondsTotal = seconds;
     }
 
     public double OnEarth()
     {
-        return SecondsTotal / EarthOrbitalPeriodSecondsPerYear;
+        return secondsTotal / EarthOrbitalPeriodSecondsPerYear;
     }
 
     public double OnMercury()
     {
-        return SecondsTotal / PlanetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Mercury");
+        return secondsTotal / planetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Mercury");
     }
 
     public double OnVenus()
     {
-        return SecondsTotal / PlanetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Venus");
+        return secondsTotal / planetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Venus");
     }
 
     public double OnMars()
     {
-        return SecondsTotal / PlanetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Mars");
+        return secondsTotal / planetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Mars");
     }
 
     public double OnJupiter()
     {
-        return SecondsTotal / PlanetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Jupiter");
+        return secondsTotal / planetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Jupiter");
     }
 
     public double OnSaturn()
     {
-        return SecondsTotal / PlanetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Saturn");
+        return secondsTotal / planetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Saturn");
     }
 
     public double OnUranus()
     {
-        return SecondsTotal / PlanetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Uranus");
+        return secondsTotal / planetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Uranus");
     }
 
     public double OnNeptune()
     {
-        return SecondsTotal / PlanetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Neptune");
+        return secondsTotal / planetsOrbitalPeriodSecondsPerYear.GetValueOrDefault("Neptune");
     }
 }
