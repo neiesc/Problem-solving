@@ -11,18 +11,16 @@ public static class NucleotideCount {
             };
         
         foreach (var dna in sequence) {
-            switch (dna) {
-                case 'A':
-                case 'C':
-                case 'G':
-                case 'T':
-                    dnaFrequency[dna]++;
-                    break;
-                default:
-                    throw new ArgumentException("The DNA not found!");
+            if (dnaFrequency.ContainsKey(dna))
+            {
+                dnaFrequency[dna]++;
+            }
+            else
+            {
+                throw new ArgumentException("The DNA not found!");
             }
         }
-
+        
         return dnaFrequency;
     }
 }
