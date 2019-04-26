@@ -13,16 +13,10 @@ public static class NucleotideCount {
         foreach (var dna in sequence) {
             switch (dna) {
                 case 'A':
-                    dnaFrequency['A'] += 1;
-                    break;
                 case 'C':
-                    dnaFrequency['C'] += 1;
-                    break;
                 case 'G':
-                    dnaFrequency['G'] += 1;
-                    break;
                 case 'T':
-                    dnaFrequency['T'] += 1;
+                    dnaFrequency[dna]++;
                     break;
                 default:
                     throw new ArgumentException("The DNA not found!");
