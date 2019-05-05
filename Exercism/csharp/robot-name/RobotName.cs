@@ -7,11 +7,7 @@ public class Robot
     private static HashSet<string> _names = new HashSet<string>();
     public Robot()
     {
-        _name = GenerateNewName();
-        while (!_names.Add(_name))
-        {
-            _name = GenerateNewName();
-        }
+        GenerateName();
     }
 
     public string Name
@@ -24,14 +20,19 @@ public class Robot
 
     public void Reset()
     {
+        GenerateName();
+    }
+
+    #region Helpers
+
+    private void GenerateName()
+    {
         _name = GenerateNewName();
         while (!_names.Add(_name))
         {
             _name = GenerateNewName();
         }
     }
-
-    #region Helpers
 
     private string GenerateNewName()
     {
