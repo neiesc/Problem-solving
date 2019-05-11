@@ -5,6 +5,12 @@ public class Robot
 {
     private string _name { get; set; }
     private static HashSet<string> _names = new HashSet<string>();
+    private static readonly Random random = new Random();
+    private const int MinNumberOfName = 100;
+    private const int MaxNumberOfName = 999;
+    private const int MinASCIIOfAlphabetUpperCase = 65;
+    private const int MaxASCIIOfAlphabetUpperCase = 90;
+
     public Robot()
     {
         GenerateName();
@@ -23,8 +29,6 @@ public class Robot
         GenerateName();
     }
 
-    #region Helpers
-
     private void GenerateName()
     {
         _name = GenerateNewName();
@@ -36,17 +40,11 @@ public class Robot
 
     private string GenerateNewName()
     {
-        var random = new Random();
-
-        var newName = GenerateCharAlphabetUpperCaseRandom() + GenerateCharAlphabetUpperCaseRandom() + random.Next(100, 999).ToString();
-        return newName;
+        return GenerateLetterOfAlphabetUpperCaseRandom() + GenerateLetterOfAlphabetUpperCaseRandom() + random.Next(MinNumberOfName, MaxNumberOfName).ToString();
     }
 
-    private string GenerateCharAlphabetUpperCaseRandom()
+    private string GenerateLetterOfAlphabetUpperCaseRandom()
     {
-        var random = new Random();
-        return Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65))).ToString();
+        return Convert.ToChar(random.Next(MinASCIIOfAlphabetUpperCase, MaxASCIIOfAlphabetUpperCase)).ToString();
     }
-
-    #endregion Helpers
 }
