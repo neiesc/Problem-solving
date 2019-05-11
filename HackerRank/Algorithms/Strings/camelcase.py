@@ -1,4 +1,6 @@
 #!/bin/python3
+# CamelCase
+# https://www.hackerrank.com/challenges/camelcase/problem
 
 import math
 import os
@@ -6,9 +8,16 @@ import random
 import re
 import sys
 
+ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
 # Complete the camelcase function below.
 def camelcase(s):
-    pass
+    countCamelCase = 1
+    for letter in s:
+        if letter in ALPHABET:
+            countCamelCase += 1
+    return countCamelCase
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
