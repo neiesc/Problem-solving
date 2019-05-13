@@ -40,11 +40,13 @@ public class Robot
 
     private string GenerateNewName()
     {
-        return GenerateLetterOfAlphabetUpperCaseRandom() + GenerateLetterOfAlphabetUpperCaseRandom() + random.Next(MinNumberOfName, MaxNumberOfName).ToString();
+        return GenerateRandomUppercaseAlphabetLetter() + GenerateRandomUppercaseAlphabetLetter()
+            + random.Next(MinNumberOfName, MaxNumberOfName).ToString();
     }
 
-    private string GenerateLetterOfAlphabetUpperCaseRandom()
+    private string GenerateRandomUppercaseAlphabetLetter()
     {
-        return Convert.ToChar(random.Next(MinASCIIOfAlphabetUpperCase, MaxASCIIOfAlphabetUpperCase)).ToString();
+        return Convert.ToChar(random.Next(MinASCIIOfAlphabetUpperCase, MaxASCIIOfAlphabetUpperCase))
+            .ToString();
     }
 }
