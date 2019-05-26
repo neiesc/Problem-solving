@@ -32,9 +32,9 @@ public class Allergies
     public Allergen[] List()
     {
         IList<Allergen> result = new List<Allergen>();
-        foreach (Allergen a in Enum.GetValues(typeof(Allergen)))
+        foreach (Allergen actualAllergen in Enum.GetValues(typeof(Allergen)))
         {
-            if ((myAllergies & a) != 0) result.Add(a);
+            if ((myAllergies & actualAllergen) != 0) result.Add(actualAllergen);
         }
         return result.ToArray();
     }
