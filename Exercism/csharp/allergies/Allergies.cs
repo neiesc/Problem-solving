@@ -26,16 +26,14 @@ public class Allergies
 
     public bool IsAllergicTo(Allergen allergen)
     {
-        return (myAllergies & allergen) == allergen;
+        return myAllergies.HasFlag(allergen);
     }
 
     public Allergen[] List()
     {
-        IList<Allergen> result = new List<Allergen>();
-        foreach (Allergen actualAllergen in Enum.GetValues(typeof(Allergen)))
-        {
-            if ((myAllergies & actualAllergen) != 0) result.Add(actualAllergen);
-        }
-        return result.ToArray();
+        return Enum.GetValues(typeof(Allergen))
+            .Cast<Allergen>()
+            .Where(x => IsAllergicTo(x))
+            .ToArray();
     }
 }
