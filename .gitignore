@@ -1,3 +1,5 @@
+.vscode/
+
 # Created by https://www.gitignore.io/api/vim,python,csharp,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=vim,python,csharp,visualstudiocode
 
@@ -483,6 +485,7 @@ tags
 [._]*.un~
 
 ### VisualStudioCode ###
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
