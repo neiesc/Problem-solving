@@ -28,11 +28,17 @@ public class GradeSchool
 
     public IEnumerable<string> Roster()
     {
-        return students.OrderBy(x => x.Grade).ThenBy(x => x.Name).Select(x => x.Name);
+        return students
+        .OrderBy(x => x.Grade)
+        .ThenBy(x => x.Name)
+        .Select(x => x.Name);
     }
 
     public IEnumerable<string> Grade(int grade)
     {
-        return students.Where(x => x.Grade == grade).OrderBy(x => x.Name).Select(x => x.Name);
+        return students
+            .Where(x => x.Grade == grade)
+            .OrderBy(x => x.Name)
+            .Select(x => x.Name);
     }
 }
