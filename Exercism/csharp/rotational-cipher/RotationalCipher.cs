@@ -6,6 +6,7 @@ public static class RotationalCipher
 {
     private static char[] _alphas_lower = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
     private static char[] _alphas_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+    
     public static string Rotate(string text, int shiftKey)
     {
         var cipher_lower = new List<char>();
