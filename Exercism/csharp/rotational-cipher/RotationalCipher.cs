@@ -6,7 +6,6 @@ using System.Text;
 public static class RotationalCipher
 {
     private static char[] _alphas_lower = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
-    private static char[] _alphas_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
     
     public static string Rotate(string text, int shiftKey)
     {
@@ -21,20 +20,12 @@ public static class RotationalCipher
             cipher.Add(_alphas_lower[i], cipher_lower[i]);
         }
 
-        var cipher_upper = new List<char>();
-        cipher_upper.AddRange(_alphas_upper.ToList().GetRange(shiftKey, _alphas_upper.Count() - shiftKey));
-        cipher_upper.AddRange(_alphas_upper.ToList().GetRange(0, shiftKey));
-
-        for (int i = 0; i < _alphas_upper.Length; i++)
-        {
-            cipher.Add(_alphas_upper[i], cipher_upper[i]);
-        }
-
         StringBuilder text_cipher = new StringBuilder();
         foreach (var c in text)
         {
-            if (cipher.TryGetValue(c, out var value))
+            if (cipher.TryGetValue(Char.ToLowerInvariant(c), out var value))
             {
+                value = Char.IsLower(c) ? value : Char.ToUpperInvariant(value);
                 text_cipher.Append(value);
             }
             else
