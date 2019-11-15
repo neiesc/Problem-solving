@@ -8,17 +8,14 @@ public static class RotationalCipher
     private static char[] _alphas_lower = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
     
     public static string Rotate(string text, int shiftKey)
-    {
-        var cipher = new Dictionary<char, char>();
-        
+    {        
         var cipher_lower = new List<char>();
         cipher_lower.AddRange(_alphas_lower.ToList().GetRange(shiftKey, _alphas_lower.Count() - shiftKey));
         cipher_lower.AddRange(_alphas_lower.ToList().GetRange(0, shiftKey));
 
-        for (int i = 0; i < _alphas_lower.Length; i++)
-        {
-            cipher.Add(_alphas_lower[i], cipher_lower[i]);
-        }
+        var cipher = _alphas_lower
+            .Zip(cipher_lower, (first, second) => (first, second))
+            .ToDictionary(d => d.first, d => d.second);
 
         StringBuilder text_cipher = new StringBuilder();
         foreach (var c in text)
