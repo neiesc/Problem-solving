@@ -21,8 +21,6 @@ def solve(number_of_elements, elements, frequency):
     upper_half = median_result[2][median_result[1] + index_offset_q3:]
     q1 = median(lower_halt)
     q3 = median(upper_half)
-    #print(f"lower_halt: {lower_halt}")
-    #print(f"upper_half: {upper_half}")
 
     return q3 - q1
 
@@ -50,4 +48,4 @@ if __name__ == "__main__":
     elements = list(map(int, input().rstrip().split()))
     frequency = list(map(int, input().rstrip().split()))
 
-    print(solve(number_of_elements, elements, frequency))
+    print('{:0.1f}'.format(solve(number_of_elements, elements, frequency)))
