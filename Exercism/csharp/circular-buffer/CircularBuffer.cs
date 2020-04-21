@@ -11,31 +11,25 @@ public class CircularBuffer<T>
         _capacity = capacity;
     }
 
-    public T Read()
-    {
-        return _buffer.Dequeue();
-    }
+    public T Read() => _buffer.Dequeue();
 
     public void Write(T value)
     {
-        _buffer.Enqueue(value);
-        if (_buffer.Count > _capacity)
+        if (_buffer.Count + 1 > _capacity)
         {
             throw new InvalidOperationException();
         }
+        _buffer.Enqueue(value);
     }
 
     public void Overwrite(T value)
     {
-        _buffer.Enqueue(value);
-        if (_buffer.Count > _capacity)
+        if (_buffer.Count + 1 > _capacity)
         {
             _buffer.Dequeue();
         }
+        _buffer.Enqueue(value);
     }
 
-    public void Clear()
-    {
-        _buffer.Clear();
-    }
+    public void Clear() => _buffer.Clear();
 }
