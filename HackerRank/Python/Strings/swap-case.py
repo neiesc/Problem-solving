@@ -1,6 +1,6 @@
 #!/bin/python3
 # sWAP cASE
-# hackerrank.com/challenges/swap-case/problem
+# https://www.hackerrank.com/challenges/swap-case/problem
 
 def swap_case(s):
     ret = ''
