@@ -1,11 +1,5 @@
-raindrops = {3: "Pling", 5: "Plang", 7: "Plong"}
+raindrops = ((3, "Pling"), (5, "Plang"), (7, "Plong"))
 def convert(number):
-    ret = ""
-    
-    for key, value in raindrops.items():
-        if number % key == 0:
-            ret += value
+    raindrop_result = [raindrop[1] for raindrop in raindrops if number % raindrop[0] == 0]
 
-    if ret == "":
-        ret = str(number)
-    return ret
+    return "".join(raindrop_result) or str(number)
