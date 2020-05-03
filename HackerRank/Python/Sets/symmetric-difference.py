@@ -6,7 +6,7 @@ def solve(m_values, n_values):
     m_values = set(m_values)
     n_values = set(n_values)
 
-    symmetric_difference = sorted(m_values.symmetric_difference(n_values))
+    symmetric_difference = sorted(m_values.union(n_values) - m_values.intersection(n_values))
     
     return symmetric_difference
 
