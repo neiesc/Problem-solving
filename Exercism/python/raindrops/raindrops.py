@@ -1,11 +1,6 @@
 def convert(number):
-    ret = ""
-    if number % 3 == 0:
-        ret += "Pling"
-    if number % 5 == 0:
-        ret += "Plang"
-    if number % 7 == 0:
-        ret += "Plong"
-    if ret == "":
-        ret = str(number)
-    return ret
+    raindrops = ((3, "Pling"), (5, "Plang"), (7, "Plong"))
+    
+    raindrop_result = [raindrop[1] for raindrop in raindrops if number % raindrop[0] == 0]
+
+    return "".join(raindrop_result) or str(number)
