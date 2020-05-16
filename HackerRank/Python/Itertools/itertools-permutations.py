@@ -10,4 +10,4 @@ if __name__ == '__main__':
 
     l = list(a)
 
-    print("\n".join(map(lambda x: "".join(x) ,permutations(sorted(l), r))))
+    print("\n".join(map(lambda x: "".join(x), permutations(sorted(l), r))))
