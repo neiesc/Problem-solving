@@ -14,7 +14,16 @@ public class Clock
         }
         else if (minutes < 0)
         {
-            hours -= 1;
+            var minutesToHours = Math.Abs(minutes / 60);
+            hours -= minutesToHours;
+            if (minutes < 0)
+            {
+                minutes += minutesToHours * 60;
+            }
+            else
+            {
+                minutes -= minutesToHours * 60;
+            }
         }
 
         _hours = hours % 24;
@@ -26,6 +35,7 @@ public class Clock
         _minutes = minutes;
         if (_minutes < 0)
         {
+            _hours -= 1;
             _minutes = 60 - Math.Abs(_minutes);
         }
     }

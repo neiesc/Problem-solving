@@ -109,7 +109,7 @@ public class ClockTests
         Assert.Equal("00:20", sut.ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Negative_minutes_roll_over()
     {
         var sut = new Clock(1, -160);
