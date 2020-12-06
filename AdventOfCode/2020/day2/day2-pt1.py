@@ -14,4 +14,3 @@ with open("input.txt", "r") as f:
             password_valids+=1
 
 print(f"password_valids: {password_valids}")
-    
