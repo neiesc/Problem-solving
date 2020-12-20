@@ -40,8 +40,8 @@ with open("input.txt", "r") as f:
             #print(f"key: {key}, value: {value}")
             passport[key] = value
 
-print(passport)
+#print(passport)
 if is_valid(passport):
     passports_valid += 1
 
-print(f"How many passports are valid: {passports_valid}")
+print(f"How many passports are valid? {passports_valid}")
