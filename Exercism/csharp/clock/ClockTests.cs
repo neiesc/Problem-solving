@@ -116,28 +116,28 @@ public class ClockTests
         Assert.Equal("22:20", sut.ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Negative_minutes_roll_over_continuously()
     {
         var sut = new Clock(1, -4820);
         Assert.Equal("16:40", sut.ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Negative_sixty_minutes_is_previous_hour()
     {
         var sut = new Clock(2, -60);
         Assert.Equal("01:00", sut.ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Negative_hour_and_minutes_both_roll_over()
     {
         var sut = new Clock(-25, -160);
         Assert.Equal("20:20", sut.ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Negative_hour_and_minutes_both_roll_over_continuously()
     {
         var sut = new Clock(-121, -5810);
