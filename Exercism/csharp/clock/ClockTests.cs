@@ -144,56 +144,56 @@ public class ClockTests
         Assert.Equal("22:10", sut.ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Add_minutes()
     {
         var sut = new Clock(10, 0);
         Assert.Equal("10:03", sut.Add(3).ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Add_no_minutes()
     {
         var sut = new Clock(6, 41);
         Assert.Equal("06:41", sut.Add(0).ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Add_to_next_hour()
     {
         var sut = new Clock(0, 45);
         Assert.Equal("01:25", sut.Add(40).ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Add_more_than_one_hour()
     {
         var sut = new Clock(10, 0);
         Assert.Equal("11:01", sut.Add(61).ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Add_more_than_two_hours_with_carry()
     {
         var sut = new Clock(0, 45);
         Assert.Equal("03:25", sut.Add(160).ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Add_across_midnight()
     {
         var sut = new Clock(23, 59);
         Assert.Equal("00:01", sut.Add(2).ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Add_more_than_one_day_1500_min_25_hrs_()
     {
         var sut = new Clock(5, 32);
         Assert.Equal("06:32", sut.Add(1500).ToString());
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Add_more_than_two_days()
     {
         var sut = new Clock(1, 1);

@@ -7,6 +7,34 @@ public class Clock
 
     public Clock(int hours, int minutes)
     {
+        var hoursAndminutes = CalculeMinutesAndHours(hours, minutes);
+        
+        _hours = hoursAndminutes.Item1;
+        _minutes = hoursAndminutes.Item2;
+    }
+
+    public Clock Add(int minutesToAdd)
+    {
+        var hoursAndminutes = CalculeMinutesAndHours(_hours, _minutes += minutesToAdd);
+
+        _hours = hoursAndminutes.Item1;
+        _minutes = hoursAndminutes.Item2;
+
+        return this;
+    }
+
+    public Clock Subtract(int minutesToSubtract)
+    {
+        throw new NotImplementedException("You need to implement this function.");
+    }
+
+    public override string ToString()
+    {
+        return $"{_hours.ToString("d2")}:{_minutes.ToString("d2")}";
+    }
+
+    private static (int, int) CalculeMinutesAndHours(int hours, int minutes)
+    {
         if (minutes >= 60)
         {
             hours = hours + (minutes / 60);
@@ -26,32 +54,18 @@ public class Clock
             }
         }
 
-        _hours = hours % 24;
-        if (_hours < 0)
+        hours = hours % 24;
+        if (hours < 0)
         {
-            _hours = 24 - Math.Abs(_hours);
+            hours = 24 - Math.Abs(hours);
         }
 
-        _minutes = minutes;
-        if (_minutes < 0)
+        if (minutes < 0)
         {
-            _hours -= 1;
-            _minutes = 60 - Math.Abs(_minutes);
+            hours -= 1;
+            minutes = 60 - Math.Abs(minutes);
         }
-    }
 
-    public Clock Add(int minutesToAdd)
-    {
-        throw new NotImplementedException("You need to implement this function.");
-    }
-
-    public Clock Subtract(int minutesToSubtract)
-    {
-        throw new NotImplementedException("You need to implement this function.");
-    }
-
-    public override string ToString()
-    {
-        return $"{_hours.ToString("d2")}:{_minutes.ToString("d2")}";
+        return (hours, minutes);
     }
 }
