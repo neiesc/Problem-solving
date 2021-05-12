@@ -25,7 +25,12 @@ public class Clock
 
     public Clock Subtract(int minutesToSubtract)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        var hoursAndminutes = CalculeMinutesAndHours(_hours, _minutes -= minutesToSubtract);
+
+        _hours = hoursAndminutes.Item1;
+        _minutes = hoursAndminutes.Item2;
+
+        return this;
     }
 
     public override string ToString()
@@ -63,6 +68,10 @@ public class Clock
         if (minutes < 0)
         {
             hours -= 1;
+            if (hours < 0)
+            {
+                hours = 24 - Math.Abs(hours);
+            }
             minutes = 60 - Math.Abs(minutes);
         }
 
