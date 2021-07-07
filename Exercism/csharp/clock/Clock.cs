@@ -77,4 +77,16 @@ public class Clock
 
         return (hours, minutes);
     }
+
+
+   public override bool Equals(Object obj)
+   {
+      if ((obj == null) || ! this.GetType().Equals(obj.GetType()))
+      {
+         return false;
+      }
+      else {
+         return ToString() == obj.ToString();
+      }
+   }
 }
