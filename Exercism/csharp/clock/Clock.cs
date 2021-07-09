@@ -15,28 +15,32 @@ public class Clock
 
     public Clock Add(int minutesToAdd)
     {
-        var hoursAndminutes = CalculeMinutesAndHours(_hours, _minutes += minutesToAdd);
+        var hoursAndminutes = CalculeMinutesAndHours(_hours, _minutes + minutesToAdd);
 
-        _hours = hoursAndminutes.Item1;
-        _minutes = hoursAndminutes.Item2;
-
-        return this;
+        return new Clock(hoursAndminutes.Item1, hoursAndminutes.Item2);
     }
 
     public Clock Subtract(int minutesToSubtract)
     {
-        var hoursAndminutes = CalculeMinutesAndHours(_hours, _minutes -= minutesToSubtract);
+        var hoursAndminutes = CalculeMinutesAndHours(_hours, _minutes - minutesToSubtract);
 
-        _hours = hoursAndminutes.Item1;
-        _minutes = hoursAndminutes.Item2;
-
-        return this;
+        return new Clock(hoursAndminutes.Item1, hoursAndminutes.Item2);
     }
 
     public override string ToString()
     {
         return $"{_hours.ToString("d2")}:{_minutes.ToString("d2")}";
     }
+
+    public override bool Equals(Object obj)
+    {
+        if ((obj == null) || ! this.GetType().Equals(obj.GetType()))
+        {
+            return false;
+        } else {
+            return ToString() == obj.ToString();
+        }
+   }
 
     private static (int, int) CalculeMinutesAndHours(int hours, int minutes)
     {
@@ -77,16 +81,4 @@ public class Clock
 
         return (hours, minutes);
     }
-
-
-   public override bool Equals(Object obj)
-   {
-      if ((obj == null) || ! this.GetType().Equals(obj.GetType()))
-      {
-         return false;
-      }
-      else {
-         return ToString() == obj.ToString();
-      }
-   }
 }

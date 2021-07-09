@@ -368,7 +368,7 @@ public class ClockTests
         Assert.Equal(new Clock(24, 0), sut);
     }
 
-    [Fact(Skip = "Remove this Skip property to run this test")]
+    [Fact]
     public void Clocks_are_immutable()
     {
         var sut = new Clock(0, 0);
