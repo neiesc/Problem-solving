@@ -1,0 +1,7 @@
+﻿services:
+  cooperasharp.service:
+    image: cooperasharp.service
+    build:
+      context: .
+      dockerfile: CooperaSharp.Service/Dockerfile
+
