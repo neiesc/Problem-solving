@@ -108,25 +108,20 @@ public class PedidoServiceTests
     }
 
     private static PedidoService CreateService(
-        FakeClienteRepository clienteRepo,
         FakePedidoRepository pedidoRepo,
         FakeEstoqueService estoque,
         FakePagamentoService pagamento,
-        FakeEmailService email,
         FakeNotificacaoService notificacao,
-        FakeLogger logger,
         FakeFreteService frete,
         FakeMapper mapper,
         FakeAuditoria auditoria)
     {
         return new PedidoService(
-            clienteRepo,
+            clientecliente,
             pedidoRepo,
             estoque,
             pagamento,
-            email,
             notificacao,
-            logger,
             frete,
             mapper,
             auditoria);

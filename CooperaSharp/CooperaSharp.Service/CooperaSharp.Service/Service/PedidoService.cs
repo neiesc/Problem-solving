@@ -2,49 +2,41 @@ namespace CooperaSharp.Service;
 
 public class PedidoService
 {
-    private readonly IClienteRepository _clienteRepository;
     private readonly IPedidoRepository _pedidoRepository;
     private readonly IEstoqueService _estoqueService;
     private readonly IPagamentoService _pagamentoService;
-    private readonly IEmailService _emailService;
     private readonly INotificacaoService _notificacaoService;
-    private readonly ILogger _logger;
     private readonly IFreteService _freteService;
     private readonly IMapper _mapper;
     private readonly IAuditoriaService _auditoriaService;
+    private readonly IClienteService _clienteService;
 
     public PedidoService(
-        IClienteRepository clienteRepository,
+        IClienteService clienteService,
         IPedidoRepository pedidoRepository,
         IEstoqueService estoqueService,
         IPagamentoService pagamentoService,
-        IEmailService emailService,
         INotificacaoService notificacaoService,
-        ILogger logger,
         IFreteService freteService,
         IMapper mapper,
         IAuditoriaService auditoriaService)
     {
-        _clienteRepository = clienteRepository;
+        _clienteService = clienteService;
         _pedidoRepository = pedidoRepository;
         _estoqueService = estoqueService;
         _pagamentoService = pagamentoService;
-        _emailService = emailService;
         _notificacaoService = notificacaoService;
-        _logger = logger;
         _freteService = freteService;
         _mapper = mapper;
         _auditoriaService = auditoriaService;
     }
 
-    public void ProcessarPedido(PedidoDto dto)
+    public (bool isValid, string descrition) ProcessarPedido(PedidoDto dto)
     {
-        var cliente = _clienteRepository.ObterPorId(dto.ClienteId);
-
-        if (cliente == null)
+        var clienteValido = _clienteService.ObterPorId(dto.ClienteId);
+        if (!clienteValido.isValid)
         {
-            _logger.Log("Cliente não encontrado");
-            return;
+            return (false, Validation.ClienteNaoEncontrado);
         }
 
         var pedido = _mapper.Map<Pedido>(dto);
@@ -59,12 +51,14 @@ public class PedidoService
         if (!pagamentoOk)
         {
             _notificacaoService.Enviar("Falha no pagamento");
-            return;
+            return (false, "Falha no pagamento");
         }
 
         _pedidoRepository.Salvar(pedido);
 
-        _emailService.EnviarConfirmacao(cliente.Email);
+        _clienteService.EnviarConfirmacao(clienteValido.result);
         _auditoriaService.Registrar("Pedido criado", pedido.Id.ToString());
+
+        return (true, "Sucesso");
     }
 }
